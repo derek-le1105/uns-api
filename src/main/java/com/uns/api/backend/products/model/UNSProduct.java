@@ -1,4 +1,4 @@
-package com.uns.api.backend.model;
+package com.uns.api.backend.products.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

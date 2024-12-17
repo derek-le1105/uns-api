@@ -1,10 +1,10 @@
-package com.uns.api.backend;
+package com.uns.api.backend.products;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.uns.api.backend.exceptions.ProductNotFoundException;
-import com.uns.api.backend.model.UNSProduct;
-import com.uns.api.backend.repository.UNSProductRepository;
+import com.uns.api.backend.products.exceptions.ProductNotFoundException;
+import com.uns.api.backend.products.model.UNSProduct;
+import com.uns.api.backend.products.repository.UNSProductRepository;
 
 import java.util.List;
 
