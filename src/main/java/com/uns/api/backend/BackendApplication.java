@@ -9,8 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import com.uns.api.backend.model.UNSProduct;
-import com.uns.api.backend.repository.UNSProductRepository;
+import com.uns.api.backend.products.model.UNSProduct;
+import com.uns.api.backend.products.repository.UNSProductRepository;
 
 @SpringBootApplication
 @EnableMongoRepositories
