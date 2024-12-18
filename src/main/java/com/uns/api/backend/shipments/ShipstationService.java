@@ -44,7 +44,7 @@ public class ShipstationService {
         HttpHeaders headers = new HttpHeaders();
         RestTemplate restTemplate = new RestTemplate();
         String uri = getShipstationURI(date);
-        // System.out.println(uri);
+        System.out.println(uri);
         try {
             String encodedAuth = Base64.getEncoder().encodeToString((apiKey + ":" + apiSecret).getBytes());
             headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -63,9 +63,13 @@ public class ShipstationService {
                         if (response.getStatusCode().is2xxSuccessful()) {
                             shipments = response.getBody();
                             shipmentList.addAll(shipments.getShipments());
+                        } else {
+                            // Handle non-successful status codes
+                            throw new HttpClientErrorException(response.getStatusCode());
                         }
                     }
                 }
+
                 return shipmentList;
             } else {
                 // Handle non-successful status codes

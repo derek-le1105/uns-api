@@ -10,9 +10,10 @@ public class Shipment {
     private String batchNumber;
     private String carrierCode;
     private String serviceCode;
+    private boolean voided;
 
     Shipment(long shipmentId, long orderId, String orderKey, String orderNumber, String trackingNumber,
-            boolean isReturnLabel, String batchNumber, String carrierCode, String serviceCode) {
+            boolean isReturnLabel, String batchNumber, String carrierCode, String serviceCode, boolean voided) {
         this.shipmentId = shipmentId;
         this.orderId = orderId;
         this.orderKey = orderKey;
@@ -22,6 +23,7 @@ public class Shipment {
         this.batchNumber = batchNumber;
         this.carrierCode = carrierCode;
         this.serviceCode = serviceCode;
+        this.voided = voided;
     }
 
     // Getters
@@ -61,6 +63,10 @@ public class Shipment {
         return serviceCode;
     }
 
+    public boolean isVoided() {
+        return voided;
+    }
+
     // Setters
 
     public void setShipmentId(long shipmentId) {
@@ -97,5 +103,9 @@ public class Shipment {
 
     public void setServiceCode(String serviceCode) {
         this.serviceCode = serviceCode;
+    }
+
+    public void setVoided(boolean voided) {
+        this.voided = voided;
     }
 }
