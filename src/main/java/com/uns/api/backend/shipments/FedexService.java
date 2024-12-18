@@ -117,17 +117,20 @@ public class FedexService {
                         List<Fedex.CompleteTrackResult> completeTrackResult = response.getOutput()
                                 .getCompleteTrackResults();
                         for (Fedex.CompleteTrackResult trackResult : completeTrackResult) {
+
                             List<Fedex.TrackResult> trackResults = trackResult.getTrackResults();
                             for (Fedex.TrackResult result : trackResults) {
-                                String status = result.getLatestStatusDetail().getStatusByLocale();
-                                // System.out.println(status + " " + status.equals("Label created"));
-                                if (status.equals("Label created")) {
-                                    // System.out.println("Stuck shipment found");
-                                    stuckShipments.add(shipments.stream()
-                                            .filter(s -> s.getTrackingNumber().equals(trackResult.getTrackingNumber()))
-                                            .findFirst().get());
-                                    // System.out.println(stuckShipments.get(stuckShipments.size() -
-                                    // 1).getOrderNumber());
+
+                                if (result.getError() != null) {
+                                    System.err.println("Error in tracking result: " + result.getError().getMessage());
+                                } else {
+                                    String status = result.getLatestStatusDetail().getStatusByLocale();
+                                    if (status.equals("Label created")) {
+                                        stuckShipments.add(shipments.stream()
+                                                .filter(s -> s.getTrackingNumber()
+                                                        .equals(trackResult.getTrackingNumber()))
+                                                .findFirst().get());
+                                    }
                                 }
                             }
                         }

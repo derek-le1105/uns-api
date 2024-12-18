@@ -46,7 +46,7 @@ public class Fedex {
 
     public static class TrackResult {
         private LatestStatusDetail latestStatusDetail;
-
+        private Error error;
         // Getters and setters for all fields
         // ...
 
@@ -54,8 +54,31 @@ public class Fedex {
             return latestStatusDetail;
         }
 
-        public void setLatestStatusDetail(LatestStatusDetail latestStatusDetail) {
+        public Error getError() {
+            return error;
+        }
+
+        public void setLatestStatusDetail(LatestStatusDetail latestStatusDetail, Error error) {
             this.latestStatusDetail = latestStatusDetail;
+            this.error = error;
+        }
+    }
+
+    public static class Error {
+        private String code;
+        private String message;
+
+        public Error(String code, String message) {
+            this.code = code;
+            this.message = message;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public String getMessage() {
+            return message;
         }
     }
 
