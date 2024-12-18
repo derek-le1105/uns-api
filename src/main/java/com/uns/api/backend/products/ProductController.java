@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 public class ProductController {
 
-    @Autowired
-    UNSProductRepository unsProductsRepository;
-
     private final UNSProductRepository unsProductRepository;
 
     public ProductController(UNSProductRepository unsProductRepository) {
