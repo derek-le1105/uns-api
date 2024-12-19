@@ -10,6 +10,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -22,6 +23,7 @@ import com.uns.api.backend.shipments.models.Fedex;
 import com.uns.api.backend.shipments.models.Shipment;
 import io.github.cdimascio.dotenv.Dotenv;
 
+@Service
 public class FedexService {
     public static List<Shipment> getFedexShipments(List<Shipment> shipments) {
         try {
@@ -159,12 +161,9 @@ public class FedexService {
             this.trackingNumberInfo = trackingNumberInfo;
         }
 
+        @SuppressWarnings("unused")
         public TrackingNumberInfo getTrackingNumberInfo() {
             return trackingNumberInfo;
-        }
-
-        public void setTrackingNumberInfo(TrackingNumberInfo trackingNumberInfo) {
-            this.trackingNumberInfo = trackingNumberInfo;
         }
     }
 
@@ -175,13 +174,11 @@ public class FedexService {
             this.trackingNumber = trackingNumber;
         }
 
+        @SuppressWarnings("unused")
         public String getTrackingNumber() {
             return trackingNumber;
         }
 
-        public void setTrackingNumber(String trackingNumber) {
-            this.trackingNumber = trackingNumber;
-        }
     }
 
     private static class TrackingBatch {
@@ -191,12 +188,9 @@ public class FedexService {
             this.trackingInfo = trackingInfo;
         }
 
+        @SuppressWarnings("unused")
         public List<TrackingInfo> getTrackingInfo() {
             return trackingInfo;
-        }
-
-        public void setTrackingInfo(List<TrackingInfo> trackingInfo) {
-            this.trackingInfo = trackingInfo;
         }
     }
 }

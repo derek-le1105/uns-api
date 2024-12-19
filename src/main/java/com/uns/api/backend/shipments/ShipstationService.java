@@ -54,6 +54,8 @@ public class ShipstationService {
             ResponseEntity<Shipments> response = restTemplate.exchange(uri, HttpMethod.GET, entity, Shipments.class);
             if (response.getStatusCode().is2xxSuccessful()) {
                 Shipments shipments = response.getBody();
+                if (shipments == null)
+                    return null;
                 shipmentList.addAll(shipments.getShipments());
 
                 if (shipments.getPages() > 1) {
@@ -62,6 +64,9 @@ public class ShipstationService {
                         response = restTemplate.exchange(uri, HttpMethod.GET, entity, Shipments.class);
                         if (response.getStatusCode().is2xxSuccessful()) {
                             shipments = response.getBody();
+                            if (shipments == null)
+                                return null;
+
                             shipmentList.addAll(shipments.getShipments());
                         } else {
                             // Handle non-successful status codes
